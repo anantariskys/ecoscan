@@ -5,7 +5,6 @@ import {
   Button,
   Image,
   ActivityIndicator,
-  StyleSheet,
   Alert,
   ScrollView,
 } from "react-native";
@@ -124,36 +123,36 @@ const scanWaste = async () => {
 
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>EcoScan ♻️</Text>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }} className="p-5 justify-center">
+      <Text className="text-3xl font-bold text-center mb-5">EcoScan ♻️</Text>
 
       {imageUri && (
-        <Image source={{ uri: imageUri }} style={styles.image} />
+        <Image source={{ uri: imageUri }} className="w-full h-64 rounded-lg mb-4" />
       )}
 
-      <View style={styles.button}>
+      <View className="my-1.5">
         <Button title="Ambil Foto Sampah" onPress={takePhoto} />
       </View>
 
       {imageUri && (
-        <View style={styles.button}>
+        <View className="my-1.5">
           <Button title="Scan Sampah" onPress={scanWaste} />
         </View>
       )}
 
-      {loading && <ActivityIndicator size="large" />}
+      {loading && <ActivityIndicator size="large" className="mt-4" />}
 
       {result && (
-        <View style={styles.card}>
-          <Text style={styles.label}>{result.category}</Text>
-          <Text style={styles.confidence}>
+        <View className="mt-5 p-4 rounded-lg bg-green-50">
+          <Text className="text-xl font-bold">{result.category}</Text>
+          <Text className="text-xs mb-2 text-gray-600">
             Akurasi: {(result.confidence * 100).toFixed(1)}%
           </Text>
 
-          <Text style={styles.text}>{result.description}</Text>
+          <Text className="text-sm">{result.description}</Text>
 
-          <Text style={styles.subtitle}>Cara Mengolah:</Text>
-          <Text style={styles.text}>{result.processing}</Text>
+          <Text className="mt-2.5 font-bold">Cara Mengolah:</Text>
+          <Text className="text-sm">{result.processing}</Text>
         </View>
       )}
     </ScrollView>
@@ -216,48 +215,3 @@ function mapWaste(label: string, score: number): ScanResult {
       "Pisahkan dan konsultasikan ke pengelola sampah setempat.",
   };
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    padding: 20,
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 26,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  image: {
-    width: "100%",
-    height: 250,
-    borderRadius: 10,
-    marginBottom: 15,
-  },
-  button: {
-    marginVertical: 6,
-  },
-  card: {
-    marginTop: 20,
-    padding: 15,
-    borderRadius: 10,
-    backgroundColor: "#e6f5ea",
-  },
-  label: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  confidence: {
-    fontSize: 12,
-    marginBottom: 8,
-    color: "#555",
-  },
-  subtitle: {
-    marginTop: 10,
-    fontWeight: "bold",
-  },
-  text: {
-    fontSize: 14,
-  },
-});
