@@ -1,50 +1,83 @@
-# Welcome to your Expo app 👋
+# EcoScan ♻️
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+EcoScan is a smart mobile application designed to help you recycle smarter. By simply pointing your camera at a waste item, EcoScan instantly identifies whether it is recyclable, compostable, or trash, helping you make eco-friendly decisions effortlessly.
 
-## Get started
+## ✨ Features
 
-1. Install dependencies
+- **Instant Waste Identification**: Uses advanced AI to classify waste items in real-time.
+- **Smart Classification**: Distinguishes between recyclables, compost, and general trash.
+- **Daily Eco-Tips**: Get daily advice on how to live a more sustainable lifestyle.
+- **User-Friendly Interface**: Clean and intuitive design powered by NativeWind.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [React Native](https://reactnative.dev/) with [Expo](https://expo.dev/)
+- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/)
+- **Styling**: [NativeWind](https://www.nativewind.dev/) (Tailwind CSS)
+- **AI/ML**: [Hugging Face Inference API](https://huggingface.co/inference-api) (using `google/vit-base-patch16-224`)
+- **Language**: TypeScript
+
+## 🚀 Getting Started
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+
+- Node.js installed on your machine.
+- [Expo Go](https://expo.dev/go) app installed on your physical device, or an Android/iOS emulator setup.
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/ecoscan.git
+   cd ecoscan
+   ```
+
+2. **Install dependencies**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. **Environment Setup**
+
+   This app requires a Hugging Face API key to perform image classification.
+   - Create a file named `.env` in the root directory.
+   - Add your Hugging Face API key:
+     ```env
+     EXPO_PUBLIC_HF_API_KEY=your_hugging_face_api_key_here
+     ```
+
+4. **Start the app**
 
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+5. **Run on Device**
+   - Scan the QR code with your phone's camera (if using Expo Go).
+   - Or press `a` for Android Emulator / `i` for iOS Simulator.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 📂 Project Structure
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+ecoscan/
+├── app/                 # Application source code & routes
+│   ├── index.tsx        # Home screen
+│   ├── scan.tsx         # Camera scanning screen
+│   ├── result.tsx       # Result display screen
+│   └── ...
+├── components/          # Reusable UI components
+├── assets/              # Images and icons
+└── ...
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🤝 Contributing
 
-## Learn more
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-To learn more about developing your project with Expo, look at the following resources:
+## 📄 License
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License.
